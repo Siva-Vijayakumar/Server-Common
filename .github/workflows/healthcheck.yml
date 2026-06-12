@@ -33,7 +33,7 @@ jobs:
           CLIQ_WEBHOOK: ${{ secrets.CLIQ_WEBHOOK }}
         run: |
           python scripts/health_check.py
-
+ 
       - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
