@@ -1,41 +1,40 @@
-name: Server Health Check
+name: ServerCommon Precheck
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  healthcheck:
+
+  precheck:
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+      - run: pip install -r requirements.txt
 
-      - name: Create Reports Folder
+      - name: Execute Precheck
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
         run: |
-          mkdir -p reports
+          python scripts/aws_precheck.py
 
-      - name: Run Health Check
+      - name: Send Cliq Notification
         env:
           CLIQ_WEBHOOK: ${{ secrets.CLIQ_WEBHOOK }}
         run: |
-          python scripts/health_check.py
- 
+          python scripts/send_cliq.py
+
       - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
           name: server-report
-          path: reports/report.json
+          path: reports/server_report.json
