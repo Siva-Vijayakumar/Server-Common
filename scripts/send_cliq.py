@@ -124,6 +124,15 @@ if data["issues"]:
         for issue in data["issues"]
     )
 
+open_ports_text = "None"
+
+if data.get("open_ports"):
+    open_ports_text = "\n".join(
+        f"🟢 Port {port}"
+        for port in data["open_ports"]
+    )
+
+
 message = f"""
  *SERVERCOMMON PRECHECK REPORT*
 
@@ -150,6 +159,12 @@ message = f"""
 
    🧠 Memory Usage :  *{data['memory_percent']}%*
    💾 Disk Usage   :  *{data['disk_percent']}%*
+
+══════════════════════════════════
+
+🌐 OPEN PORTS
+
+{open_ports_text}
 
 ══════════════════════════════════
 

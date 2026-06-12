@@ -37,6 +37,13 @@ report["os"] = run_command(
     "grep PRETTY_NAME /etc/os-release"
 )
 
+
+ports_output = run_command(
+    "ss -tuln | awk 'NR>1 {print $5}' | awk -F: '{print $NF}' | sort -n | uniq"
+)
+
+report["open_ports"] = ports_output.splitlines()
+
 # --------------------------------------------------
 # CPU
 # --------------------------------------------------
