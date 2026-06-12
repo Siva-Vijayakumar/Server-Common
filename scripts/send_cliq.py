@@ -41,36 +41,29 @@ Kernel:
 Uptime:
 {data['uptime']}
 
---------------------------------
+----------------------------------
 
 Services
 
-MySQL :
-{data['mysql']}
+MySQL : {data['mysql']}
+Redis : {data['redis']}
+Nginx : {data['nginx']}
 
-Redis :
-{data['redis']}
+----------------------------------
 
-SSH :
-{data['ssh']}
-
---------------------------------
-
-Resource Usage
-
-Memory :
+Memory Usage :
 {data['memory_percent']}%
 
-Disk :
+Disk Usage :
 {data['disk_percent']}%
 
---------------------------------
+----------------------------------
 
 Issues
 
 {issues_text}
 
---------------------------------
+----------------------------------
 
 Status
 
