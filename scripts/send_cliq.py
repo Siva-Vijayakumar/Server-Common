@@ -125,7 +125,7 @@ if data["issues"]:
     )
 
 message = f"""
-🚀 *SERVERCOMMON PRECHECK REPORT*
+ *SERVERCOMMON PRECHECK REPORT*
 
 ══════════════════════════════════
 
@@ -163,10 +163,6 @@ message = f"""
 
         {status_icon} *{data['status']}*
 
-══════════════════════════════════
-
-⏰ Generated Automatically by
-🤖 *Server Common Bot*
 """
 
 payload = {
