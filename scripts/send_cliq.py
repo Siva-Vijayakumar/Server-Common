@@ -127,41 +127,46 @@ if data["issues"]:
 message = f"""
 🚀 *SERVERCOMMON PRECHECK REPORT*
 
-━━━━━━━━━━━━━━━━━━━━━━
-🖥️ SERVER INFORMATION
-━━━━━━━━━━━━━━━━━━━━━━
+══════════════════════════════════
 
-Hostname : {data['hostname']}
-OS       : {data['os']}
-Kernel   : {data['kernel']}
-Uptime   : {data['uptime']}
+🖥️ *SERVER DETAILS*
 
-━━━━━━━━━━━━━━━━━━━━━━
-⚙️ SERVICE STATUS
-━━━━━━━━━━━━━━━━━━━━━━
+   Hostname  :  `{data['hostname']}`
+   OS        :  `{data['os'].replace('PRETTY_NAME=', '').replace('"', '')}`
+   Kernel    :  `{data['kernel']}`
+   Uptime    :  `{data['uptime']}`
 
-MySQL    : {mysql_icon} {data['mysql']}
-Redis    : {redis_icon} {data['redis']}
-Nginx    : {nginx_icon} {data['nginx']}
+══════════════════════════════════
 
-━━━━━━━━━━━━━━━━━━━━━━
-📊 RESOURCE USAGE
-━━━━━━━━━━━━━━━━━━━━━━
+⚙️ *SERVICE HEALTH*
 
-Memory   : {data['memory_percent']}%
-Disk     : {data['disk_percent']}%
+   {mysql_icon} MySQL     :  *{data['mysql']}*
+   {redis_icon} Redis     :  *{data['redis']}*
+   {nginx_icon} Nginx     :  *{data['nginx']}*
 
-━━━━━━━━━━━━━━━━━━━━━━
-⚠️ ISSUES
-━━━━━━━━━━━━━━━━━━━━━━
+══════════════════════════════════
 
-{issues_text}
+📊 *RESOURCE UTILIZATION*
 
-━━━━━━━━━━━━━━━━━━━━━━
-🎯 APPROVAL STATUS
-━━━━━━━━━━━━━━━━━━━━━━
+   🧠 Memory Usage :  *{data['memory_percent']}%*
+   💾 Disk Usage   :  *{data['disk_percent']}%*
 
-{status_icon} {data['status']}
+══════════════════════════════════
+
+🚨 *OBSERVATIONS*
+
+{issues_text if issues_text != "None" else "   ✅ No Issues Detected"}
+
+══════════════════════════════════
+
+🎯 *APPROVAL DECISION*
+
+        {status_icon} *{data['status']}*
+
+══════════════════════════════════
+
+⏰ Generated Automatically by
+🤖 *Server Common Bot*
 """
 
 payload = {
