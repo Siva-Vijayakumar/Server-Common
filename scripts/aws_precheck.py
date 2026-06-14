@@ -6,7 +6,7 @@ HOST = os.getenv("EC2_HOST")
 USER = os.getenv("EC2_USER")
 PRIVATE_KEY = os.getenv("EC2_PRIVATE_KEY")
 
-os.makedirs("reports", exist_ok=True)
+os.makedirs("reports", exist_ok=True) 
 
 with open("temp_key.pem", "w") as key_file:
     key_file.write(PRIVATE_KEY) 
