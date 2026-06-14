@@ -10,7 +10,7 @@ os.makedirs("reports", exist_ok=True)
 
 with open("temp_key.pem", "w") as key_file:
     key_file.write(PRIVATE_KEY) 
-
+ 
 os.chmod("temp_key.pem", 0o600)
 
 key = paramiko.RSAKey.from_private_key_file("temp_key.pem")
