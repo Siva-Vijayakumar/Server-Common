@@ -111,7 +111,7 @@ report["redis_port"] = run_command(
 report["nginx_port"] = run_command(
     "ss -tulnp | grep ':80 '"
 )
-
+ 
 # --------------------------------------------------
 # VALIDATION
 # --------------------------------------------------
