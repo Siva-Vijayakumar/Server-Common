@@ -96,10 +96,6 @@ report["nginx"] = run_command(
     "systemctl is-active nginx"
 )
 
-# --------------------------------------------------
-# PORTS
-# --------------------------------------------------
-
 report["mysql_port"] = run_command(
     "ss -tulnp | grep ':3306 '"
 )
@@ -111,11 +107,8 @@ report["redis_port"] = run_command(
 report["nginx_port"] = run_command(
     "ss -tulnp | grep ':80 '"
 )
- 
-# --------------------------------------------------
-# VALIDATION
-# --------------------------------------------------
 
+ 
 issues = []
 
 if report["mysql"] != "active":
