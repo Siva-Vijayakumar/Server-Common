@@ -173,11 +173,11 @@ message = f"""
 {issues_text if issues_text != "None" else "   ✅ No Issues Detected"}
 
 ══════════════════════════════════
-
+ 
 🎯 *APPROVAL DECISION*
 
         {status_icon} *{data['status']}*
-
+ 
 """
 
 payload = {
